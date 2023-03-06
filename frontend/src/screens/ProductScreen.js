@@ -9,10 +9,10 @@ import {
   Button,
   Form,
 } from "react-bootstrap";
-import Rating from "../componenet/Rating";
+import Rating from "../components/Rating";
 // import axios from "axios";
-import Message from "../componenet/Message";
-import Loader from "../componenet/Loader";
+import Message from "../components/Message";
+import Loader from "../components/Loader";
 import { listProductDetails } from "../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 

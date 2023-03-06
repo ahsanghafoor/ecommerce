@@ -7,10 +7,10 @@ import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 const Header = () => {
   return (
     <header>
-      <Navbar bg="dark" varient="light" expand="lg" collapseOnSelect>
+      <Navbar bg="light" varient="light" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand color="light"> ProShop </Navbar.Brand>
+            <Navbar.Brand> ProShop </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">

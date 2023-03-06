@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import Header from "./componenet/Header";
-import Footer from "./componenet/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomeScreeen from "./screens/HomeScreeen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
