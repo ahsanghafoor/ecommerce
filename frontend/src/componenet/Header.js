@@ -10,12 +10,12 @@ const Header = () => {
       <Navbar bg="dark" varient="light" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand color="white"> ProShop </Navbar.Brand>
+            <Navbar.Brand color="light"> ProShop </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <NavbarCollapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <LinkContainer to="/cart">
+              <LinkContainer to="/cart/:id">
                 <Nav.Link>
                   <li className="fa fa-shopping-cart px-1"></li> Cart
                 </Nav.Link>
