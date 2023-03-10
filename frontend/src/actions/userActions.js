@@ -3,16 +3,18 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_LOGOUT,
 } from "../constants/userConstants";
+// redux thunk arrgument
 export const login = (email, password) => async (dispatch) => {
-  //thunk
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
     });
     const config = {
       headers: {
-        "content-type": "application/json",
+        //authorization token sends into header
+        "Content-Type": "application/json",
       },
     };
     const { data } = await axios.post(
@@ -21,17 +23,22 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
     dispatch({
-      type: USER_LOGIN_REQUEST,
-      paylaod: data,
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
-        error.responce && error.responce.data.message
-          ? error.responce.data.message
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
 };
