@@ -36,7 +36,7 @@ const products = [
     numReviews: 8,
   },
   {
-    name: "Playstation 5 Digital Edition",
+    name: "Playstation 5 Digital Edition - PS5",
     image: "/images/playstation.jpg",
     description:
       "The ultimate home entertainment center starts with PlayStation, 4K Entertainment Streaming, PlayStation VR Integration ",
@@ -60,7 +60,7 @@ const products = [
     numReviews: 25,
   },
   {
-    name: "RGB Machanical Keyboard",
+    name: "RGB Machanical Keyboard - RedDragon",
     image: "/images/keyboard.jpg",
     description:
       "RGB Machanical Keyboard - an advanced type of LED backlit keyboard that generates custom colors by projecting simultaneous combinations of red, green and blue light, like a TV, creating millions of potential hues.",

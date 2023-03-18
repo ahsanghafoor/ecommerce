@@ -13,11 +13,11 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
-  debugger;
-  const location = useLocation;
-  const navigate = useNavigate;
 
-  const redirect = location.search ? location.split("=")[1] : "/";
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
@@ -52,7 +52,27 @@ const LoginScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
+        <Button type="submit" variant="primary">
+          Sign In
+        </Button>
       </Form>
+
+      <Row className="py-3">
+        <Col>
+          New Customer ?
+          <Link to={redirect ? `/register?redirect=${redirect}` : "register"}>
+            {" "}
+            Register!
+          </Link>
+        </Col>
+      </Row>
+    </FormContainer>
+  );
+};
+
+export default LoginScreen;
+/* </Form>
 
       <Row className="py-3">
         <Col>
@@ -73,6 +93,4 @@ const LoginScreen = () => {
       </Row>
     </FormContainer>
   );
-};
-
-export default LoginScreen;
+}; */

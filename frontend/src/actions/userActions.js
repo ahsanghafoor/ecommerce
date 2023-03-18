@@ -5,6 +5,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGOUT,
 } from "../constants/userConstants";
+
 // redux thunk arrgument
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -12,7 +13,7 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_REQUEST,
     });
     const config = {
-      headers: {
+      Headers: {
         //authorization token sends into header
         "Content-Type": "application/json",
       },

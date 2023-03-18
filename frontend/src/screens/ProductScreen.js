@@ -34,7 +34,7 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-outline-dark my-3" to="/">
         Go Back
       </Link>
       {loading ? (
@@ -44,7 +44,12 @@ const ProductScreen = () => {
       ) : (
         <Row>
           <Col md={6}>
-            <Image src={product.image} alt={product.name} fluid />
+            <Image
+              src={product.image}
+              alt={product.name}
+              className="image"
+              fluid
+            />
           </Col>
           <Col md={3}>
             <ListGroup variant="flush">
@@ -107,6 +112,7 @@ const ProductScreen = () => {
                     onClick={addToCartHandler}
                     className="btn-block"
                     type="button"
+                    variant="dark"
                     disabled={product.countInStock === 0}
                   >
                     Add To Cart
