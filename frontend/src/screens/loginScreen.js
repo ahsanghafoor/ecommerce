@@ -30,7 +30,7 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1 className="pt-5">Sign In</h1>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
@@ -71,25 +71,3 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
-/* </Form>
-
-      <Row className="py-3">
-        <Col>
-          <Button type="submit" variant="dark">
-            Sign In
-          </Button>
-        </Col>
-        <Row>
-          <Col>
-            New Customer?{""}
-            <Link
-              to={redirect ? `/register?redirect=${redirect}` : "/register"}
-            >
-              Register..
-            </Link>
-          </Col>
-        </Row>
-      </Row>
-    </FormContainer>
-  );
-}; */

@@ -18,18 +18,26 @@ const Footer = () => {
           </Col>
           <Col md={4} className="mb-3">
             <h4 className="text-white">Quick Links</h4>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled text-white">
               <li>
-                <a href="/">Home</a>
+                <a href="/" className="text-white">
+                  Home
+                </a>
               </li>
               <li>
-                <a href="/cart/:id">Cart</a>
+                <a href="/cart/:id" className="text-white">
+                  Cart
+                </a>
               </li>
               <li>
-                <a href="/">About Us</a>
+                <a href="/" className="text-white">
+                  About Us
+                </a>
               </li>
               <li>
-                <a href="/">Products</a>
+                <a href="/" className="text-white">
+                  Products
+                </a>
               </li>
             </ul>
           </Col>

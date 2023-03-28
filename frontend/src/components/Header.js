@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>TechzZ</Navbar.Brand>
@@ -28,7 +28,6 @@ const Header = () => {
               <Searchbox />
               <LinkContainer to="/cart/:id">
                 <Nav.Link>
-                  <i className="bi bi-cart-fill me-1"></i>
                   <li className="fa fa-shopping-cart px-1 "></li>Cart
                 </Nav.Link>
               </LinkContainer>
@@ -48,7 +47,6 @@ const Header = () => {
               ) : (
                 <LinkContainer to="/login">
                   <Nav.Link>
-                    <i className="bi bi-person-fill me-1"></i>
                     <li className="fa fa-user px-1 "></li>Sign In
                   </Nav.Link>
                 </LinkContainer>
