@@ -1,12 +1,5 @@
-TechZz
+TechZz - 
 An ecommerce web app.
-
-Table of Contents
-Installation
-Usage
-Credits
-License
-Contact
 
 Installation: 
 npm install
@@ -16,9 +9,6 @@ again, npm install
 
 Contributing: 
 TechLift training bootcamp in MERN Stack
-
-Credits: 
-Brad Traversy
 
 License: 
 Ahsan Ghafoor 
