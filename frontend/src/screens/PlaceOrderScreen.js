@@ -1,17 +1,28 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { createOrder } from "../actions/orderActions";
+import {
+  ORDER_CREATE_RESET,
+  ORDER_DETAILS_RESET,
+} from "../constants/orderConstants";
 
-const PlaceOrderScreen = ({ navigate }) => {
+// import { USER_DETAILS_RESET } from "../constants/userConstants";
+
+const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
 
-  //   Calculate prices
+  // if (!cart.shippingAddress.address) {
+  //   navigate("/shipping");
+  // } else if (!cart.paymentMethod) {
+  //   navigate("/payment");
+  // }
+  // Calculate prices
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
@@ -26,20 +37,21 @@ const PlaceOrderScreen = ({ navigate }) => {
     Number(cart.shippingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2);
+
   const orderCreate = useSelector((state) => state.orderCreate);
+
   const { order, success, error } = orderCreate;
 
   useEffect(() => {
-    if (success && order && order._id) {
-      navigate.push(`/order/${order._id}`);
+    if (success) {
+      dispatch({ type: ORDER_DETAILS_RESET });
+      navigate(`/orders/${order?._id}`);
     }
-  }, [navigate, order, success]);
-
-  // useEffect(() => {
-  //   if (success) {
-  //     navigate.push(`/order/${order._id}`);
-  //   }
-  // }, [navigate, success]);
+    return () => {
+      dispatch({ type: ORDER_CREATE_RESET });
+    };
+    //eslint-disable-next-line
+  }, [navigate, success]);
 
   const placeOrderHandler = () => {
     dispatch(
@@ -53,10 +65,12 @@ const PlaceOrderScreen = ({ navigate }) => {
         totalPrice: cart.totalPrice,
       })
     );
+    console.log("placeOrderHandler");
   };
+
   return (
     <>
-      <CheckoutSteps step1 step2 step3 step4 />
+      <CheckoutSteps step2 step3 step4 />
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
@@ -64,8 +78,9 @@ const PlaceOrderScreen = ({ navigate }) => {
               <h2>Shipping</h2>
               <p>
                 <strong>Address:</strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city},
-                {cart.shippingAddress.postalCode},{cart.shippingAddress.country}
+                {cart.shippingAddress.address}, {cart.shippingAddress.city}{" "}
+                {cart.shippingAddress.postalCode},{" "}
+                {cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
 
@@ -144,7 +159,7 @@ const PlaceOrderScreen = ({ navigate }) => {
               <ListGroup.Item>
                 <Button
                   type="button"
-                  className="btn btn-dark"
+                  className="btn-block"
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
                 >

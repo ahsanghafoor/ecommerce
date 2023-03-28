@@ -5,6 +5,8 @@ import Product from "../components/Product";
 import { listProducts } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Slider from "../components/Slider";
+import Footer from "../components/Footer";
 
 const HomeScreeen = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,8 @@ const HomeScreeen = () => {
 
   return (
     <>
-      <h1>Latest products</h1>
+      <Slider />
+      <h3>Latest products</h3>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -32,6 +35,7 @@ const HomeScreeen = () => {
           ))}
         </Row>
       )}
+      <Footer />
     </>
   );
 };

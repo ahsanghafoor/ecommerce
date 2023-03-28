@@ -2,9 +2,8 @@ import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
-// import {Link} from 'react-router-dom';
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import { useDispatch, useSelector } from "react-redux";
+import Searchbox from "./SearchBox";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -15,39 +14,47 @@ const Header = () => {
   const logOutHandler = () => {
     dispatch(logout());
   };
+
   return (
     <header>
-      <Navbar bg="dark" varient="light" expand="lg" collapseOnSelect>
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand className="text-white"> ProShop </Navbar.Brand>
+            <Navbar.Brand>TechzZ</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <NavbarCollapse id="basic-navbar-nav">
-            <Nav className="ms-auto ">
-              <LinkContainer to="/cart/:id ">
-                <Nav.Link className="text-white">
-                  <li className="fa fa-shopping-cart px-1 "></li> Cart
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto align-items-center">
+              <Searchbox />
+              <LinkContainer to="/cart/:id">
+                <Nav.Link>
+                  <i className="bi bi-cart-fill me-1"></i>
+                  <li className="fa fa-shopping-cart px-1 "></li>Cart
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
-                  <linkContainer to="/profile">
+                <NavDropdown
+                  title={userInfo.name}
+                  id="username"
+                  className="ms-lg-3"
+                >
+                  <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </linkContainer>
+                  </LinkContainer>
                   <NavDropdown.Item onClick={logOutHandler}>
-                    LogOut
+                    Log Out
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <LinkContainer to="/login">
-                  <Nav.Link className="text-white">
-                    <li className="fa fa-user px-1 "></li> Sign In
+                  <Nav.Link>
+                    <i className="bi bi-person-fill me-1"></i>
+                    <li className="fa fa-user px-1 "></li>Sign In
                   </Nav.Link>
                 </LinkContainer>
               )}
             </Nav>
-          </NavbarCollapse>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </header>
@@ -55,4 +62,3 @@ const Header = () => {
 };
 
 export default Header;
-//mine
